@@ -37,7 +37,7 @@ class Knob: UIControl {
     private (set) var value: Float = 0
     private let renderer = KnobRenderer()
     
-    var lineWidth: CGFloat {
+    @IBInspectable var lineWidth: CGFloat {
         get { return renderer.lineWidth }
         set { renderer.lineWidth = newValue }
     }
@@ -52,7 +52,7 @@ class Knob: UIControl {
         set { renderer.endAngle = newValue }
     }
     
-    var pointerLength: CGFloat {
+    @IBInspectable var pointerLength: CGFloat {
         get { return renderer.pointerLength }
         set { renderer.pointerLength = newValue }
     }
