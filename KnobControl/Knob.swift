@@ -29,7 +29,7 @@
 import UIKit
 import UIKit.UIGestureRecognizerSubclass
 
-class Knob: UIControl {
+@IBDesignable public class Knob: UIControl {
     var minimumValue: Float = 0
     var maximumValue: Float = 1
     var isContinuous = true
@@ -62,7 +62,7 @@ class Knob: UIControl {
         commonInit()
     }
   
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
@@ -117,6 +117,14 @@ class Knob: UIControl {
         let valueRange = maximumValue - minimumValue
         let angleValue = CGFloat(value - minimumValue) / CGFloat(valueRange) * angleRange + startAngle
         renderer.setPointerAngle(angleValue, animated: animated)
+    }
+}
+
+extension Knob {
+    public override func prepareForInterfaceBuilder() {
+        super.prepareForInterfaceBuilder()
+        
+        renderer.updateBounds(bounds)
     }
 }
 
